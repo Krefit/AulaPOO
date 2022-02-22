@@ -3,20 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visao;
-
-import Modelos.Retangulo;
+import Modelos.Cone;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author ALUNO
  */
-public class TelaRetangulo extends javax.swing.JFrame {
+public class TelaCone extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaRetangulo
      */
-    public TelaRetangulo() {
+    public TelaCone() {
         initComponents();
     }
 
@@ -30,24 +28,24 @@ public class TelaRetangulo extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldLargura = new javax.swing.JTextField();
+        jTextFieldRaio = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaSaida = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButtonExecutar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldComprimento = new javax.swing.JTextField();
+        jTextFieldAltura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Comprimento");
+        jLabel3.setText("Altura");
 
-        jTextFieldLargura.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldLargura.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldRaio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldRaio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldLarguraActionPerformed(evt);
+                jTextFieldRaioActionPerformed(evt);
             }
         });
 
@@ -87,12 +85,12 @@ public class TelaRetangulo extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Largura");
+        jLabel2.setText("Raio");
 
-        jTextFieldComprimento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldComprimento.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldAltura.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldComprimentoActionPerformed(evt);
+                jTextFieldAlturaActionPerformed(evt);
             }
         });
 
@@ -112,11 +110,11 @@ public class TelaRetangulo extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldLargura, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldRaio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextFieldComprimento, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -128,11 +126,11 @@ public class TelaRetangulo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldLargura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldRaio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldComprimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jButtonExecutar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,36 +141,39 @@ public class TelaRetangulo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldLarguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLarguraActionPerformed
+    private void jTextFieldRaioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRaioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldLarguraActionPerformed
+    }//GEN-LAST:event_jTextFieldRaioActionPerformed
 
     private void jButtonExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExecutarActionPerformed
         // TODO add your handling code here:
-        try {
-            Retangulo ret = new Retangulo();
-
-            float largura = 0;
-            float comprimento = 0;
-            largura = Float.parseFloat(jTextFieldLargura.getText());
-            comprimento = Float.parseFloat(jTextFieldComprimento.getText());
-
-            ret.setComprimento(comprimento);
-            ret.setLargura(largura);
-
-            String saida = "Dados da efera:\n";
-            saida += "Area: " + ret.area() + "\n";
-            saida += "Perimetro: " + ret.perimetro();
+        try{
+            Cone cone = new Cone();
+            
+            float raio = 0;
+            float altura = 0;
+            
+            raio = Float.parseFloat(jTextFieldRaio.getText());
+            altura = Float.parseFloat(jTextFieldAltura.getText());
+            
+            cone.setRaio(raio);
+            cone.setAltura(altura);
+            
+            String saida = "Dados da cone:\n";
+            saida += "Area Lateral: " + cone.areaLateral()+ "\n";
+            saida += "Area Total: " + cone.areaTotal()+ "\n";
+            saida += "Volume: " + cone.volume();
             jTextAreaSaida.setText(saida);
-        } catch (Exception erro) {
+            
+        } catch (Exception erro){
             JOptionPane.showMessageDialog(this, erro.getMessage());
         }
-
+        
     }//GEN-LAST:event_jButtonExecutarActionPerformed
 
-    private void jTextFieldComprimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldComprimentoActionPerformed
+    private void jTextFieldAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAlturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldComprimentoActionPerformed
+    }//GEN-LAST:event_jTextFieldAlturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,20 +192,21 @@ public class TelaRetangulo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaRetangulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaRetangulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaRetangulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaRetangulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaRetangulo().setVisible(true);
+                new TelaCone().setVisible(true);
             }
         });
     }
@@ -217,7 +219,7 @@ public class TelaRetangulo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaSaida;
-    private javax.swing.JTextField jTextFieldComprimento;
-    private javax.swing.JTextField jTextFieldLargura;
+    private javax.swing.JTextField jTextFieldAltura;
+    private javax.swing.JTextField jTextFieldRaio;
     // End of variables declaration//GEN-END:variables
 }
