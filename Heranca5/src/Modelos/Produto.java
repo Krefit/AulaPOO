@@ -10,7 +10,11 @@ package Modelos;
  * @author gusta
  */
 abstract public class Produto {
-    private int codigo = 0;
+    protected int codigo = 0;
+    
+    public Produto(int codigo){
+        this.codigo = codigo;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -21,6 +25,6 @@ abstract public class Produto {
     }
     
     abstract public String obtemDescricao();
-    abstract public int obtemPreco();
+    abstract public float obtemPreco();
     abstract public String obtemTipoProduto();
 }
