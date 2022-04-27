@@ -25,6 +25,8 @@ public class ClienteDao implements IClienteDao{
     @Override
     public void incluir(Cliente objeto) throws Exception {
         try {
+            int id = GeradorIdentificador.getID();
+            objeto.setId(id);
             //cria arquivo
             FileWriter fw = new FileWriter(nomeArquivoDisco,true);
             //cria buffer
@@ -55,7 +57,30 @@ public class ClienteDao implements IClienteDao{
 
     @Override
     public ArrayList<Cliente> obterClientes() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+            FileReader fr = new FileReader(nomeArquivoDisco);
+            BufferedReader br = new BufferedReader(fr);
+            String linha = "";
+            while((linha = br.readLine())!=null){
+                Cliente objetoCliente = new Cliente();
+                String vetorString[] = linha.split(";");
+                if(vetorString.length != 5) throw new Exception("Faltam dados na String");
+                objetoCliente.setId(Integer.parseInt(vetorString[0]));
+                objetoCliente.setNomeCompleto(vetorString[1]);
+                objetoCliente.setTelefone(Integer.parseInt(vetorString[2]));
+                objetoCliente.setEmail(vetorString[3]);
+                objetoCliente.setEndereco(vetorString[4]);
+                listaClientes.add(objetoCliente);
+            }
+            br.close();
+            return listaClientes;
+        
+        } catch (Exception erro) {
+            throw erro;
+        }
+        
+        
     }
 
         

@@ -92,6 +92,10 @@ public class TelaTeste extends javax.swing.JFrame {
             
             jTextAreaTeste.setText(saida);
             
+            IClienteDao teste = new ClienteDao();
+            teste.incluir(obj);
+            teste.incluir(obj2);
+            
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(rootPane, erro.getMessage());
         }
