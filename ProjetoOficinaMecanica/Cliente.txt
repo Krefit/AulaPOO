@@ -1,2 +1,1 @@
-3;Godofredo Das Cove;123123123;godofredoCove@gmail.com;rua dos cocqueiros
-4;Godofredo Neves;43214321;godNeves@gmail.com;rua Bacalhau
+3;Godofredo Neves;43214321;godNeves@gmail.com;rua Bacalhau

@@ -18,21 +18,21 @@ import java.io.IOException;
  *
  * @author Gustavo.Santos
  */
-public class ClienteDao implements IClienteDao{
+public class ClienteDao implements IClienteDao {
 
     private String nomeArquivoDisco = "Cliente.txt";
-    
+
     @Override
     public void incluir(Cliente objeto) throws Exception {
         try {
             int id = GeradorIdentificador.getID();
             objeto.setId(id);
             //cria arquivo
-            FileWriter fw = new FileWriter(nomeArquivoDisco,true);
+            FileWriter fw = new FileWriter(nomeArquivoDisco, true);
             //cria buffer
             BufferedWriter bw = new BufferedWriter(fw);
             //escreve arquivo
-            bw.write(objeto.toString()+"\n");
+            bw.write(objeto.toString() + "\n");
             //fecha arquivo
             bw.close();
         } catch (Exception erro) {
@@ -47,12 +47,50 @@ public class ClienteDao implements IClienteDao{
 
     @Override
     public Cliente consultar(int ID) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            FileReader fr = new FileReader(nomeArquivoDisco);
+            BufferedReader br = new BufferedReader(fr);
+            String linha = "";
+            while ((linha = br.readLine()) != null) {
+                Cliente objetoCliente = new Cliente();
+                String vetorString[] = linha.split(";");
+                if (vetorString.length != 5) {
+                    throw new Exception("Faltam dados na String");
+                }
+                objetoCliente.setId(Integer.parseInt(vetorString[0]));
+                objetoCliente.setNomeCompleto(vetorString[1]);
+                objetoCliente.setTelefone(Integer.parseInt(vetorString[2]));
+                objetoCliente.setEmail(vetorString[3]);
+                objetoCliente.setEndereco(vetorString[4]);
+                if (objetoCliente.getId() == ID) {
+                    br.close();
+                    return objetoCliente;
+                }
+            }
+            br.close();
+            throw new Exception("ID NÃO EXISTE");
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Override
     public void excluir(int ID) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            ArrayList<Cliente> listaCliente = null;
+            listaCliente = obterClientes();
+            FileWriter fw = new FileWriter(nomeArquivoDisco);
+            //cria buffer
+            BufferedWriter bw = new BufferedWriter(fw);
+            //escreve arquivo
+            for(int pos=0;pos<listaCliente.size();pos++){
+                if(listaCliente.get(pos).getId() != ID)
+                    bw.write(listaCliente.get(pos).toString() + "\n");
+            }
+            bw.close();    
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Override
@@ -62,10 +100,12 @@ public class ClienteDao implements IClienteDao{
             FileReader fr = new FileReader(nomeArquivoDisco);
             BufferedReader br = new BufferedReader(fr);
             String linha = "";
-            while((linha = br.readLine())!=null){
+            while ((linha = br.readLine()) != null) {
                 Cliente objetoCliente = new Cliente();
                 String vetorString[] = linha.split(";");
-                if(vetorString.length != 5) throw new Exception("Faltam dados na String");
+                if (vetorString.length != 5) {
+                    throw new Exception("Faltam dados na String");
+                }
                 objetoCliente.setId(Integer.parseInt(vetorString[0]));
                 objetoCliente.setNomeCompleto(vetorString[1]);
                 objetoCliente.setTelefone(Integer.parseInt(vetorString[2]));
@@ -75,13 +115,11 @@ public class ClienteDao implements IClienteDao{
             }
             br.close();
             return listaClientes;
-        
+
         } catch (Exception erro) {
             throw erro;
         }
-        
-        
+
     }
 
-        
 }

@@ -8,6 +8,7 @@ package Visao;
 import javax.swing.JOptionPane;
 import Modelos.Cliente;
 import Persistencia.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -90,12 +91,23 @@ public class TelaTeste extends javax.swing.JFrame {
             saida += obj.toString()+"\n";
             saida+= obj2.toString()+"\n";
             
-            jTextAreaTeste.setText(saida);
+            //jTextAreaTeste.setText(saida);
             
             IClienteDao teste = new ClienteDao();
-            teste.incluir(obj);
-            teste.incluir(obj2);
+            //teste.incluir(obj);
+           // teste.incluir(obj2);
+           /*ArrayList<Cliente> listaCliente = null;
+           listaCliente = teste.obterClientes();
             
+           saida = "DADOS DE TODOS OS CLIENTES\n";
+           
+           for(int pos = 0;pos <listaCliente.size();pos++){
+               saida += listaCliente.get(pos).toString()+"\n";
+           }*/
+           //jTextAreaTeste.setText(saida);
+           //jTextAreaTeste.setText(teste.consultar(2).toString());
+           teste.excluir(2);
+           
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(rootPane, erro.getMessage());
         }
