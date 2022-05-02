@@ -27,8 +27,8 @@ public class ClienteDao implements IClienteDao {
         try {
             int id = GeradorIdentificador.getID();
             objeto.setId(id);
-            //cria arquivo
-            FileWriter fw = new FileWriter(nomeArquivoDisco, true);
+            //cria arquivo CLIENTE
+            FileWriter fw = new FileWriter(nomeArquivoDisco, true);//true = acumular
             //cria buffer
             BufferedWriter bw = new BufferedWriter(fw);
             //escreve arquivo
@@ -57,6 +57,7 @@ public class ClienteDao implements IClienteDao {
                 if (vetorString.length != 5) {
                     throw new Exception("Faltam dados na String");
                 }
+                //[ID][Nome][Telefone][Email][Endereco]
                 objetoCliente.setId(Integer.parseInt(vetorString[0]));
                 objetoCliente.setNomeCompleto(vetorString[1]);
                 objetoCliente.setTelefone(Integer.parseInt(vetorString[2]));
@@ -77,16 +78,21 @@ public class ClienteDao implements IClienteDao {
     @Override
     public void excluir(int ID) throws Exception {
         try {
-            ArrayList<Cliente> listaCliente = null;
-            listaCliente = obterClientes();
+            ArrayList<Cliente> listaCliente = null;// Cria lista vazia
+            listaCliente = obterClientes();//Popular a lista com os Clientes
             FileWriter fw = new FileWriter(nomeArquivoDisco);
             //cria buffer
             BufferedWriter bw = new BufferedWriter(fw);
+            int contDeletado = 0;
             //escreve arquivo
-            for(int pos=0;pos<listaCliente.size();pos++){
+            for(int pos=0;pos<listaCliente.size()/*tamanho da lista*/;pos++){
                 if(listaCliente.get(pos).getId() != ID)
                     bw.write(listaCliente.get(pos).toString() + "\n");
+                else
+                    contDeletado++;
             }
+            if(contDeletado == 0)
+                throw new Exception("ID NÃO ENCONTRADO!");
             bw.close();    
         } catch (Exception e) {
             throw e;
@@ -103,6 +109,7 @@ public class ClienteDao implements IClienteDao {
             while ((linha = br.readLine()) != null) {
                 Cliente objetoCliente = new Cliente();
                 String vetorString[] = linha.split(";");
+                //[ID];[Nome];[Telefone];[Email];[Endereco]
                 if (vetorString.length != 5) {
                     throw new Exception("Faltam dados na String");
                 }

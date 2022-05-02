@@ -19,7 +19,7 @@ import java.io.IOException;
 public class GeradorIdentificador {
    
     public static int getID()throws FileNotFoundException, IOException{
-        String nomeDoArquivo ="idGerado.txt";
+        String nomeDoArquivo ="idGerado.txt"; //ARQUIVO DE ID
         FileReader fr = new FileReader(nomeDoArquivo);
         BufferedReader br  = new BufferedReader(fr);
         String linha=br.readLine();

@@ -88,14 +88,14 @@ public class TelaTeste extends javax.swing.JFrame {
             Cliente obj2 = new Cliente(12,"Godofredo Neves", 
                     43214321, "godNeves@gmail.com", "rua Bacalhau");
             String saida = "TESTE CLIENTE \n";
-            saida += obj.toString()+"\n";
-            saida+= obj2.toString()+"\n";
+            //saida += obj.toString()+"\n";
+           // saida+= obj2.toString()+"\n";
             
             //jTextAreaTeste.setText(saida);
             
             IClienteDao teste = new ClienteDao();
             //teste.incluir(obj);
-           // teste.incluir(obj2);
+            //teste.incluir(obj2);
            /*ArrayList<Cliente> listaCliente = null;
            listaCliente = teste.obterClientes();
             
@@ -103,10 +103,10 @@ public class TelaTeste extends javax.swing.JFrame {
            
            for(int pos = 0;pos <listaCliente.size();pos++){
                saida += listaCliente.get(pos).toString()+"\n";
-           }*/
-           //jTextAreaTeste.setText(saida);
+           }
+           jTextAreaTeste.setText(saida);*/
            //jTextAreaTeste.setText(teste.consultar(2).toString());
-           teste.excluir(2);
+           teste.excluir(4);
            
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(rootPane, erro.getMessage());
