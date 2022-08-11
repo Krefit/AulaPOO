@@ -16,10 +16,12 @@ public class Atividade1 {
         
         int vetor[] = new int[100000];
         int cont = 0;
-        int x = 4;
-        
+        int x = 43311;
+        int inicio = 1;
+        int fim = 100000;
+        int vetor2[] = vetor;
         while(cont < vetor.length){
-            vetor[cont] = Busca.sorteia(1,1000000);
+            vetor[cont] = Busca.sorteia(inicio,fim);
             cont++;
         }
         
@@ -32,6 +34,20 @@ public class Atividade1 {
             System.out.println(x + " não existe no vetor;");
         
         long timeFim = System.currentTimeMillis();
+        System.out.println("Tempo de execução:" + (timeFim-timeInicio));
+        /*------------------------------------------------------*/
+        /*------------------------------------------------------*/
+        /*------------------------------------------------------*/
+              
+        vetor2 = Busca.ordSelectSort(vetor2);
+        
+        timeInicio = System.currentTimeMillis(); 
+        if(Busca.buscaBinaria(vetor2, x,inicio,fim))
+            System.out.println(x + " existe no vetor;");
+        else
+            System.out.println(x + " não existe no vetor;");
+        
+        timeFim = System.currentTimeMillis();
         System.out.println("Tempo de execução:" + (timeFim-timeInicio));
     }
 }
