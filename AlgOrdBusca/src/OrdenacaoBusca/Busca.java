@@ -59,7 +59,9 @@ public class Busca {
     public static int sorteia(int limiteInferior, int limiteSuperior){
         Random r = new Random();
         //System.out.println(r.nextInt(limiteSuperior - limiteInferior + 1) + limiteInferior);
-        return r.nextInt(limiteSuperior - limiteInferior + 1) + limiteInferior;
+        int saida = r.nextInt(limiteSuperior - limiteInferior + 1) + limiteInferior;
+        System.out.print(saida + ", ");
+        return saida;
         
     }
     /*Faça um programa que preencha aleatoriamente (veja o método 'sorteia' abaixo) um vetor de 100.000 posições com 
