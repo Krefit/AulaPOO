@@ -4,7 +4,14 @@
  */
 package n1_buscaordenacao;
 
+import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Clock;
 import java.util.Random;
+import persistencia.Busca;
 
 /**
  *
@@ -15,17 +22,28 @@ public class N1_BuscaOrdenacao {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
         // TODO code application logic here
+        
+        int tamanhoVetor = 0;
+        //Ler arquivo TXT:
+        String nomeArquivo = "ArquivoTeste.txt";//"Dicionario.txt";
+        FileReader fr = new FileReader(nomeArquivo);
+        BufferedReader br = new BufferedReader(fr);
+        String linha = br.readLine();//lê primeira linha (tamanho vetor)
+        tamanhoVetor = Integer.parseInt(linha);       
+        
+        String vetorSaida[] = new String[tamanhoVetor];
+        
+        Busca.preencheVetor(vetorSaida);
+        
+//        for(int cont = 0;cont<vetorSaida.length;cont++)
+//            System.out.println(vetorSaida[cont]);
+        
+        String novoVetor[] = Busca.ordSelectSort(vetorSaida);
+        for(int cont = 0;cont<novoVetor.length;cont++)
+            System.out.println(novoVetor[cont]);
     }
     
-    public int geraNumeroRandom(int limiteInferior, int limiteSuperior){
-        Random r = new Random(); //cria novo numero random
-        //System.out.println(r.nextInt(limiteSuperior - limiteInferior + 1) + limiteInferior);
-        int saida = r.nextInt(limiteSuperior - limiteInferior + 1) + limiteInferior; //fórmula para gerar o número entre os limites informados
-        System.out.print(saida + ", ");
-        return saida;
-        
-    }
     
 }
