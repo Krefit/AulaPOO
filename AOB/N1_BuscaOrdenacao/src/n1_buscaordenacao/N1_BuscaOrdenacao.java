@@ -39,8 +39,12 @@ public class N1_BuscaOrdenacao {
         
 //        for(int cont = 0;cont<vetorSaida.length;cont++)
 //            System.out.println(vetorSaida[cont]);
+        long timeInicio = System.currentTimeMillis();
+        //String novoVetor[] = Busca.ordSelectSort(vetorSaida);
+        String novoVetor[] = Busca.ordBubbleSort(vetorSaida);
+        long timeFim = System.currentTimeMillis();
+        System.out.println("Tempo de execução:" + (timeFim-timeInicio)); // termina de contar o tempo
         
-        String novoVetor[] = Busca.ordSelectSort(vetorSaida);
         for(int cont = 0;cont<novoVetor.length;cont++)
             System.out.println(novoVetor[cont]);
     }

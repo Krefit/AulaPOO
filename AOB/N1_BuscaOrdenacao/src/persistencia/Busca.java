@@ -61,17 +61,16 @@ public class Busca {
         return vetOrdenado;
     }
     
-    public static int[] ordBubbleSort(int vet[]){
-        int vetOrdenado[] = vet;
-        int aux = 0;
+    public static String[] ordBubbleSort(String vet[]){
+        String vetOrdenado[] = vet;
+        String aux = "";
         
-        for(int cont = 0; cont==vet.length-1;cont++)
-        {
-            for (int cont2 = 0;cont2 < vet.length-cont-1; cont2++){
-                if(vetOrdenado[cont2]>vetOrdenado[cont2+1]){
-                    aux = vetOrdenado[cont2];
-                    vetOrdenado[cont2] = vetOrdenado[cont2+1];
-                    vetOrdenado[cont2+1] = aux;
+        for(int cont =vet.length-1;cont>=1;cont--){
+            for(int cont2 = 1;cont2<=cont;cont2++){
+                if(vet[cont2-1].length()>vet[cont2].length()){
+                    aux = vet[cont2-1];
+                    vet[cont2-1] = vet[cont2];
+                    vet[cont2]=aux;
                 }
             }
         }
