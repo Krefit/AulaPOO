@@ -78,16 +78,32 @@ public class Busca {
         return vetOrdenado;
     }
     
-    public static int[] ordInsertionSort(int vet[]){
-        int vetOrdenado[] = vet;
+    public static String[] ordInsertionSort(String vet[]){
+        String vetOrdenado[] = vet;
         int aux = 0;
         
+        for(int i = 1;i<=vetOrdenado.length-1;i++){
+            String auxV = vetOrdenado[i];
+            aux = i;
+            while((aux>0) && (vetOrdenado[aux-1].length()>auxV.length())){
+                vetOrdenado[aux] = vetOrdenado[aux-1];
+                aux = aux-1;
+            }
+            vetOrdenado[aux] = auxV;
+        }
         
         return vetOrdenado;
     };
     
-    public static int/*[]*/ ordMergeSort(){
-        return 0;
+    public static String[] ordMergeSort(String vet[]){
+        String vetOrdenado[] = vet;
+        int aux = 0;
+        
+        for(int i =0;i<=vetOrdenado.length;i++){
+            
+        }
+        
+        return vetOrdenado;
     };
     
     public static int/*[]*/ ordQuickSort(){
